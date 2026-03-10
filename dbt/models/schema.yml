@@ -1,0 +1,92 @@
+version: 2
+
+sources:
+  - name: public
+    database: project
+    schema: public
+    description: "Données agrégées provenant du streaming Spark"
+
+    tables:
+      - name: water_sensor_agg
+        description: "Table générée par Spark Streaming"
+
+        columns:
+          - name: start_time
+            tests:
+              - not_null
+
+          - name: pipeline_id
+            tests:
+              - not_null
+
+          - name: location
+            tests:
+              - not_null
+
+models:
+
+  - name: water_sensor_agg
+    description: "Agrégation des métriques des pipelines"
+
+    columns:
+      - name: start_time
+        tests:
+          - not_null
+
+      - name: pipeline_id
+        tests:
+          - not_null
+
+      - name: location
+        tests:
+          - not_null
+
+      - name: avg_pressure
+
+      - name: avg_flow_rate
+
+      - name: avg_water_quality
+
+      - name: avg_temperature
+
+      - name: num_measurements
+
+
+  - name: water_sensor_quality
+    description: "Statistiques de qualité de l'eau par localisation"
+
+    columns:
+
+      - name: location
+        tests:
+          - not_null
+
+      - name: avg_water_quality
+        tests:
+          - not_null
+
+      - name: min_water_quality
+
+      - name: max_water_quality
+
+      - name: quality_status
+
+
+  - name: water_sensor_alerts
+    description: "Détection d'anomalies dans les pipelines"
+
+    columns:
+
+      - name: start_time
+
+      - name: pipeline_id
+
+      - name: location
+
+      - name: avg_pressure
+
+      - name: avg_flow_rate
+
+      - name: avg_water_quality
+
+      - name: alert_type

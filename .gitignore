@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Docker
+*.log
+*.pid
+*.sock
+*.env
+*.tmp
+*.swp
+
+# Airflow
+airflow/airflow.db
+airflow/__pycache__/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# IDE
+.vscode/
+.idea/
